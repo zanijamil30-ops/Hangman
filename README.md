@@ -50,6 +50,7 @@ Hangman/
 │
 ├── static/               # CSS and other static assets
 │   └── styles.css
+│   └── screenshot.jpeg
 │
 └── templates/            # HTML templates
     ├── index.html
