@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hangman — Play</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="card header">
+      <h1>Hangman</h1>
+      <a href="{{ url_for('new_game') }}">Restart</a>
+    </div>
+
+    <div class="card main">
+      <div class="left">
+        <div class="ascii">
+          <!-- simple ASCII placeholder; you can replace with your stages from hangman.py -->
+          {% if attempts_left >= 5 %}
+            <pre>
+  +---+
+  |   |
+      |
+      |
+      |
+ =====</pre>
+          {% elif attempts_left >= 3 %}
+            <pre>
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+ =====</pre>
+          {% else %}
+            <pre>
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+ =====</pre>
+          {% endif %}
+        </div>
+
+        <div class="word">{{ word_display }}</div>
+
+        <div class="info">
+          <div>Attempts left: <strong>{{ attempts_left }}</strong></div>
+          <div class="small">Wrong: {{ wrong | join(', ') if wrong else 'None' }}</div>
+        </div>
+
+        {% if message %}
+          <div class="small" style="text-align:center; margin-bottom:6px;"><strong>{{ message }}</strong></div>
+        {% endif %}
+
+        {% if finished %}
+          <div class="result win">🎉 You won! The word was: {{ secret_word }}</div>
+        {% elif lost %}
+          <div class="result lose">💀 Game over! The word was: {{ secret_word }}</div>
+        {% endif %}
+      </div>
+
+      <div class="right">
+        <div class="card" style="padding:12px;">
+          <div style="text-align:center; margin-bottom:8px;" class="small">Enter a letter or click a key</div>
+
+          <form id="guessForm" method="POST" action="{{ url_for('game') }}">
+            <div class="form-row">
+              <input id="guessInput" name="guess" maxlength="1" autocomplete="off" pattern="[A-Za-z]" required>
+              <button id="guessBtn" type="submit">Guess</button>
+            </div>
+          </form>
+
+          <div class="keyboard" id="keyboard">
+            {% for ch in 'abcdefghijklmnopqrstuvwxyz' %}
+              {% set chs = ch|string %}
+              <div class="key {% if ch in guessed or ch in wrong %}disabled{% endif %}" data-letter="{{ chs }}">{{ chs | upper }}</div>
+            {% endfor %}
+          </div>
+
+          <p class="small" style="margin-top:12px;">Guessed: {{ guessed | join(', ') if guessed else 'None' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // keyboard click handling
+  const keys = document.querySelectorAll('.key');
+  const input = document.getElementById('guessInput');
+  const form = document.getElementById('guessForm');
+  const submitBtn = document.getElementById('guessBtn');
+
+  keys.forEach(k => {
+    k.addEventListener('click', () => {
+      if (k.classList.contains('disabled')) return;
+      input.value = k.dataset.letter;
+      // small visual feedback
+      k.classList.add('disabled');
+      // submit the form
+      form.submit();
+    });
+  });
+
+  // prevent submission if game finished or lost
+  const finished = {{ 'true' if finished else 'false' }};
+  const lost = {{ 'true' if lost else 'false' }};
+  if (finished || lost) {
+    input.disabled = true;
+    submitBtn.disabled = true;
+    keys.forEach(k => k.classList.add('disabled'));
+  }
+
+  // autofocus for quick typing
+  if (!input.disabled) {
+    input.focus();
+    input.select();
+  }
+</script>
+</body>
+</html>
