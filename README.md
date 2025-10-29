@@ -1,6 +1,7 @@
 # 🎮 Hangman Flask App
 
-![Hangman Screenshot](https://raw.githubusercontent.com/zanjamil30-ops/Hangman/main/hangman-flask/static/Screenshot.jpeg)
+![Screenshot png](https://github.com/user-attachments/assets/236c08eb-a063-4b66-9e61-7e8d7d555e36)
+
 
 A simple and interactive **Hangman Game** built with **Python (Flask)**.  
 This project demonstrates Flask routing, session management, and HTML templating — perfect for learning how to turn Python scripts into web apps.
