@@ -1,32 +1,63 @@
-# 🎮 Hangman — The Classic Word Guessing Game (Python + ASCII Art)
+# 🎮 Hangman Flask App
 
-A fun and interactive **Python implementation of the classic Hangman game**, enhanced with detailed **ASCII graphics** to visualize each stage of the hangman.  
-This game challenges players to guess a randomly selected word one letter at a time before the poor stick figure meets its fate! 💀
-
----
-
-## 🚀 Features
-- 🎯 Random word selection from a built-in list (`python`, `developer`, `machine`, etc.)
-- 💬 Interactive terminal gameplay
-- 💀 Dynamic ASCII art that updates with each wrong guess
-- 🧠 Input validation to prevent repeated or invalid entries
-- 🏆 Win or lose messages with full word reveal
+A simple and interactive **Hangman Game** built with **Python (Flask)**.  
+This project demonstrates Flask routing, session management, and HTML templating — perfect for learning how to turn Python scripts into web apps.
 
 ---
 
-## 🧩 Tech Stack
-- **Language:** Python  
-- **Libraries Used:** `random` (standard library only)  
-- **Interface:** Command-line (CLI)
+## 🚀 Run the App Locally
 
----
-
-## 📦 How to Run
+### 1️⃣ Clone the repository
 ```bash
-# Clone the repository
-git clone https://github.com/zanijamil30-ops/Hangman.git
+git clone https://github.com/zanjamil30-ops/Hangman.git
 cd Hangman
+2️⃣ Create a virtual environment (optional but recommended)
+bash
+Copy code
+python -m venv .venv
+.\.venv\Scripts\activate
+3️⃣ Install dependencies
+bash
+Copy code
+pip install flask
+4️⃣ Run the Flask app
+bash
+Copy code
+python app.py
+Then open this link in your browser:
+👉 http://127.0.0.1:5000
 
-# Run the script
-python hangman.py
+🧩 Features
+Classic Hangman gameplay built on Flask.
+
+Session-based word tracking for each game.
+
+Simple, modern CSS styling and responsive layout.
+
+On-screen clickable keyboard for easy guessing.
+
+Uses Flask’s default templates and static structure.
+
+🗂️ Project Structure
+php
+Copy code
+Hangman/
+│
+├── app.py                # Main Flask application
+│
+├── static/               # CSS and other static assets
+│   └── styles.css
+│
+└── templates/            # HTML templates
+    ├── index.html
+    └── game.html
+🧠 Author
+Developed by zanjamil30-ops 🎓
+If you find this project helpful, feel free to ⭐ it on GitHub!
+
+🖼️ Localhost Preview
+Once running, visit:
+➡️ http://127.0.0.1:5000
+
+Enjoy playing Hangman! 🎯
 
