@@ -60,4 +60,6 @@ Once running, visit:
 ➡️ http://127.0.0.1:5000
 
 Enjoy playing Hangman! 🎯
+<img width="1896" height="966" alt="image" src="https://github.com/user-attachments/assets/d1a5838e-bf7f-44d6-87bb-f205965997b6" />
+
 
