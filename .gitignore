@@ -1,1 +1,48 @@
+# -------------------------------
+# Python / Flask Project .gitignore
+# -------------------------------
+
+# Virtual environments
+venv/
+.venv/
+
+# Python bytecode & caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# Flask instance / configs
+instance/
+*.db
+*.sqlite3
+*.log
+
+# Environment / secrets
+.env
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & editor folders
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Jupyter / Colab artifacts
+.ipynb_checkpoints/
+*.ipynb
+
+# Build & distribution folders
+dist/
+build/
 
